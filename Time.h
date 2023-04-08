@@ -107,6 +107,12 @@ std::ostream &operator<<(std::ostream &os, const Time &time) {
     return os;
 }
 
+std::ostream &operator<<(std::ostream &os, const std::pair<Time, Time> &time) {
+    os << "[ " << time.first << " -> " << time.second << " ]";
+    return os;
+}
+
+
 /*
 int main() {
   Time time1(10, 30, 45);

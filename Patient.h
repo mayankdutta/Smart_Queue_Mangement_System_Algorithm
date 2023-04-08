@@ -19,7 +19,7 @@ public:
 
     Time response_time;
     Time time_arrival;
-    Time expected_time;
+    pair<Time, Time> expected_time;
 
     static int count_patients;
 
@@ -35,12 +35,12 @@ public:
             this->score += Tribonacci[this->count_late];
         }
 
-        this->score = min(this->score, 20);
+        this->score = min(this->score, 20000);
         this->count_late += 1;
     }
 
     Patient() : time_arrival(Time(0, 0, 0)),
-                expected_time(Time(0, 0, 0)),
+                expected_time({Time(0, 0, 0), Time(0, 0, 0)}),
                 response_time(Time(0, 0, 0)) {
 
         this->age = 0;
@@ -65,16 +65,28 @@ public:
         this->treated = patient.treated;
     }
 
-    void fillRandom() {
-        auto _expected_time = Time(getRandomNumber(10, 14), getRandomNumber(0, 59),
-                                   0);
+    void fillRandom(int i, int total_size) {
 
-        auto _arrival_time = Time(getRandomNumber(_expected_time.getHours(), 14),
+        pair<Time, Time> _expected_time;
+
+        if (i < total_size/4) {
+            _expected_time = {Time(10, 0, 0), Time(11, 0, 0)};
+        } else if (total_size/4 <= i && i < 2 * total_size/4) {
+            _expected_time = {Time(11, 0, 0), Time(12, 0, 0)};
+        }else if (2 * total_size/4 <= i && i < 3 * total_size/4) {
+            _expected_time = {Time(12, 0, 0), Time(13, 0, 0)};
+        }
+        else if (3 * total_size/4 <= i && i < 4 * total_size/4) {
+            _expected_time = {Time(13, 0, 0), Time(14, 0, 0)};
+        }
+
+        auto _arrival_time = Time(getRandomNumber(_expected_time.first.getHours(), 14),
                                   getRandomNumber(0, 59), 0);
 
         this->appointment = ++Patient::count_patients;
         this->age = getRandomNumber(20, 75);
-        this->expected_time = _expected_time;
+        this->expected_time.first = _expected_time.first;
+        this->expected_time.second = _expected_time.second;
         this->time_arrival = _arrival_time;
 
         this->score = this->appointment;

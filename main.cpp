@@ -20,8 +20,9 @@ void re_order(vector<Patient> &patients) {
 int main() {
     vector<Patient> patients(25);
 
-    for (auto &patient: patients) {
-        patient.fillRandom();
+
+    for (int i = 0; i < patients.size(); i++) {
+        patients[i].fillRandom(i, patients.size());
     }
 
     Time start_time = Time(10, 0, 0);
@@ -31,13 +32,15 @@ int main() {
 
     Time time_stacked;
     int temp_count = 0;
-    int temp_threshold = 10;
+    int temp_threshold = 200;
 
     for (Time i = start_time; i <= end_time; i = i + 60) {
+//        cout << "current time: " << i << '\n';
         for (int current_patient = 0; current_patient < patients.size(); ) {
-            cout << patients[current_patient].appointment << ' ' << patients[current_patient].time_arrival << ' ' << i  << ' ' << patients[current_patient].score << '\n';
-            if (patients[current_patient].time_arrival == i) {
-                cout << "present\n";
+//            cout << patients[current_patient].appointment << ' ' << patients[current_patient].time_arrival << ' '  << patients[current_patient].score << '\n';
+
+            if (patients[current_patient].time_arrival <= i) {
+//                cout << "present\n";
 
                 patients[current_patient].set_time(time_stacked);
                 current_patient++;
@@ -45,7 +48,7 @@ int main() {
 
             } else {
                 if (temp_count > temp_threshold) break;
-                cout << "absent\n";
+//                cout << "absent\n";
 
                 patients[current_patient].change_score();
                 re_order(patients);
@@ -53,7 +56,6 @@ int main() {
                 temp_count ++;
             }
         }
-        if (temp_count > temp_threshold) break;
     }
 
     for (const auto &patient: patients) {
