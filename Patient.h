@@ -95,7 +95,7 @@ public:
             this->score += 4;
         }
 
-        this->time_consulting = getRandomNumber(3 * 60, 10 * 60);
+        this->time_consulting = getRandomNumber(3 * 60, 25 * 60);
     }
 
     Patient &operator=(const Patient &patient) = default;

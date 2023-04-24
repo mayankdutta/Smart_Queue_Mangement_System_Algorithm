@@ -26,7 +26,7 @@ bool comparator2(const Patient &patient1, const Patient &patient2) {
 }
 
 int main() {
-    vector<Patient> patients(25);
+    vector<Patient> patients(500);
 
     for (int i = 0; i < patients.size(); i++) {
         patients[i].fillRandom(i, (int) patients.size());
