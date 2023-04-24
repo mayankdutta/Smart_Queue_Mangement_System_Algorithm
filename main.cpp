@@ -98,9 +98,9 @@ int main() {
 
     }
 
-    for (const auto &patient: patients) {
-        cout << patient << '\n';
-    }
+//    for (const auto &patient: patients) {
+//        cout << patient << '\n';
+//    }
 
     sort(patients.begin(), patients.end(), comparator2);
 
