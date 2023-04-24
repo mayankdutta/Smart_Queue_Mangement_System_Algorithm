@@ -1,7 +1,3 @@
-//
-// Created by Mayank Sharma on 07/04/23.
-//
-
 #include <iostream>
 #include <random>
 
