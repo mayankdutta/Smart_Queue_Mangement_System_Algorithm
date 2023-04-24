@@ -1617,6 +1617,6 @@ initial order: 447 score: 20 count late : 2 response time: [0:5:47] time of arri
 initial order: 470 score: 20 count late : 2 response time: [0:20:29] time of arrival: [13:59:0] expected time: [ [13:0:0] -> [14:0:0] ] treated: 1 consult time: 3m 43s
 ```
 
-##### Maximum response time: 24m
+##### Maximum response time: 25m
 
 </details>
