@@ -4,11 +4,16 @@
 - for statistical use.
 - [output analysis](https://docs.google.com/spreadsheets/d/1YEiyJlPEfdzCgCVG8fJXoGJxDbKNDlao4ccvkCLtJ_w/edit?usp=sharing).
 
-## Assumptions
+
+# Assumption
+
+- for most efficiency Slots are assumed to be of `1hr`.
+- we are resetting `score`, `count late` for every slot, therefore their existing value may not make sense.
+
+### Case 1 
 
 - Assuming each patient taking consult time in between `3m` to `10m`.
 - Assuming clinical timing from `10AM` to `2PM`.
-- for most efficiency Slots are assumed to be of `1hr`.
 
 <details>
 	<summary> 25 Patients, sample data1 </summary>
@@ -1101,11 +1106,10 @@ initial order: 743 score: 20 count late : 2 response time: [0:8:57] time of arri
 
 </details>
 
-## Assumptions
+## Case 2 
 
 - Assuming each patient taking consult time in between `3m` to `25m`.
 - Assuming clinical timing from `10AM` to `2PM`.
-- for most efficiency Slots are assumed to be of `1hr`.
 
 <details>
 	<summary> 500 Patients, sample data1 </summary>
