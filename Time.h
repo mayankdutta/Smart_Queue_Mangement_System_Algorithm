@@ -17,6 +17,16 @@ public:
         minutes = m;
         seconds = s;
     }
+    Time (int seconds) {
+
+        hours = seconds / 3600;
+        int remaining_seconds = seconds % 3600;
+
+        minutes = remaining_seconds / 60;
+        remaining_seconds = remaining_seconds % 60;
+
+        this->seconds = remaining_seconds;
+    }
 
     // Getter methods
     int getHours() const { return hours; }
@@ -27,8 +37,8 @@ public:
 
     // Time addition operator
 
-    int inSeconds() {
-        return hours * 60 * 60 + minutes * 60 + seconds;
+    int inSeconds() const {
+        return hours * 3600  + minutes * 60 + seconds;
     }
 
     Time operator+(const int seconds) const {
@@ -60,7 +70,15 @@ public:
         return result;
     }
 
-    // Time comparison operators
+    Time operator-(const Time t) const {
+        return {this->inSeconds() - t.inSeconds()};
+    }
+
+    Time operator+(const Time t) const {
+        return {this->inSeconds() + t.inSeconds()};
+    }
+
+        // Time comparison operators
     bool operator==(const Time &other) const {
         return (hours == other.hours && minutes == other.minutes &&
                 seconds == other.seconds);
